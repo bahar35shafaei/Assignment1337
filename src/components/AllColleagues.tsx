@@ -22,7 +22,7 @@ const AllColleagues = () => {
 
   const fetchAllColleagues = () => {
     Api.getEmployees()
-      .then(response => {
+      .then((response) => {
         if (response.status === 200) {
           console.log('SUCCESS', response, response.data?.length);
           setColleaguesData(response.data);
@@ -31,7 +31,7 @@ const AllColleagues = () => {
         }
         setFetchLoading(false);
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   };
 
   const filterColleaguesData = (
@@ -43,26 +43,28 @@ const AllColleagues = () => {
       return;
     }
 
-    const { name, office, sortByName, sortByOffice } = filterValues;
+    const {
+      name, office, sortByName, sortByOffice,
+    } = filterValues;
 
     const filteredColleagues = colleaguesApiData.filter(
       (colleague: IColleague) =>
-        colleague.name.toLowerCase().includes(name.toLowerCase()) &&
-        colleague.office.toLowerCase().includes(office.toLowerCase()),
+        colleague.name.toLowerCase().includes(name.toLowerCase())
+        && colleague.office.toLowerCase().includes(office.toLowerCase()),
     );
 
     const sortedColleaguesByName = filteredColleagues.sort(
       (a: IColleague, b: IColleague) =>
-        sortByName === SortType.ASCENDING
+        (sortByName === SortType.ASCENDING
           ? a.name.localeCompare(b.name)
-          : b.name.localeCompare(a.name),
+          : b.name.localeCompare(a.name)),
     );
 
     const sortedColleaguesByOffice = sortedColleaguesByName.sort(
       (a: IColleague, b: IColleague) =>
-        sortByOffice === SortType.ASCENDING
+        (sortByOffice === SortType.ASCENDING
           ? a.office.localeCompare(b.office)
-          : b.office.localeCompare(a.office),
+          : b.office.localeCompare(a.office)),
     );
     setColleaguesData(sortedColleaguesByOffice);
   };
@@ -84,9 +86,9 @@ const AllColleagues = () => {
               <div className="animate-spin rounded-full h-20 w-20 border-b-2 border-gray-900" />
             </div>
           )}
-          {!fetchLoading &&
-            !showlistView &&
-            colleaguesData.map((colleague: IColleague) => (
+          {!fetchLoading
+            && !showlistView
+            && colleaguesData?.map((colleague: IColleague) => (
               <Colleague key={colleague.name} colleague={colleague} />
             ))}
         </div>

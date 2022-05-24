@@ -34,7 +34,9 @@ export default function Toolbar(props: IToolbarProps) {
   const submitFiltersValues = () => {
     filterColleaguesData(filtersValues);
   };
-  const { name, office, sortByName, sortByOffice } = filtersValues;
+  const {
+    name, office, sortByName, sortByOffice,
+  } = filtersValues;
   return (
     <div className="grid w-full gap-x-10 gap-y-10 xsm:grid-col-1 sm:grid-cols-2   md:grid-cols-5 lg:grid-cols-5 my-8 bg-slate-50 rounded px-5 py-7 shadow-lg">
       <div className="flex flex-col">
