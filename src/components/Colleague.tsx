@@ -11,7 +11,9 @@ export default function Colleague(props: IColleagueProps) {
   const { Twitter, Linkdin, Github } = SvgIcons;
 
   const {
-    colleague: { name, office },
+    colleague: {
+      name, office, gitHub, linkedIn, twitter,
+    },
   } = props;
 
   return (
@@ -22,9 +24,9 @@ export default function Colleague(props: IColleagueProps) {
       <div className="flex flex-row justify-between items-center  w-full mt-4">
         <span className="font-semibold text-xl">{name}</span>
         <div className="flex flex-row justify-between items-center md:flex-row sm:flex-col">
-          <Icon imageSource={Linkdin} />
-          <Icon imageSource={Github} />
-          <Icon imageSource={Twitter} />
+          {linkedIn && <Icon imageSource={Linkdin} />}
+          {gitHub && <Icon imageSource={Github} />}
+          {twitter && <Icon imageSource={Twitter} />}
         </div>
       </div>
       <span className="flex w-full font-semibold text-xl">{office}</span>

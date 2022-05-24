@@ -2,13 +2,11 @@ import axios from 'axios';
 
 export const instance = axios.create({
   baseURL: process.env.REACT_APP_API_BASE_URL,
-  timeout: 3000,
+  timeout: 100000,
   headers: {
     'Content-Type': 'application/json',
     Accept: 'application/json',
     Authorization: process.env.REACT_APP_API_KEY!!,
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
   },
 });
 

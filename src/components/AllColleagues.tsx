@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { SortType } from '../enums';
 import { IColleague, IFilterValue } from '../interfaces';
 import Colleague from './Colleague';
@@ -24,7 +24,6 @@ const AllColleagues = () => {
     Api.getEmployees()
       .then((response) => {
         if (response.status === 200) {
-          console.log('SUCCESS', response, response.data?.length);
           setColleaguesData(response.data);
           setColleaguesApiData(response.data);
           setFetchLoading(false);
@@ -49,8 +48,8 @@ const AllColleagues = () => {
 
     const filteredColleagues = colleaguesApiData.filter(
       (colleague: IColleague) =>
-        colleague.name.toLowerCase().includes(name.toLowerCase())
-        && colleague.office.toLowerCase().includes(office.toLowerCase()),
+        colleague?.name.toLowerCase().includes(name.toLowerCase())
+        && colleague?.office && colleague.office.toLowerCase().includes(office.toLowerCase()),
     );
 
     const sortedColleaguesByName = filteredColleagues.sort(
@@ -80,12 +79,12 @@ const AllColleagues = () => {
           showListView={showlistView}
           setShowlistView={setShowlistView}
         />
+        {fetchLoading && (
+        <div className="w-full flex justify-center items-center">
+          <div className="animate-spin rounded-full h-20 w-20 border-b-2 border-gray-900" />
+        </div>
+        )}
         <div className="grid w-full gap-x-10 gap-y-10 pb-10  px-4 xsm:grid-col-1 sm:grid-cols-2   md:grid-cols-3 md:px-0   lg:grid-cols-4 ">
-          {fetchLoading && (
-            <div className=" flex justify-center items-center">
-              <div className="animate-spin rounded-full h-20 w-20 border-b-2 border-gray-900" />
-            </div>
-          )}
           {!fetchLoading
             && !showlistView
             && colleaguesData?.map((colleague: IColleague) => (
