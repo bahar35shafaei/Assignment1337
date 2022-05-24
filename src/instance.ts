@@ -13,16 +13,16 @@ export const instance = axios.create({
 });
 
 instance.interceptors.request.use(
-  config => {
+  (config) => {
     const newConfig = { ...config, headers: { ...config.headers } };
     return newConfig;
   },
-  error => Promise.reject(error),
+  (error) => Promise.reject(error),
 );
 
 instance.interceptors.response.use(
-  response => response,
-  error => {
+  (response) => response,
+  (error) => {
     if (axios.isCancel(error)) {
       return { status: -1, message: 'Request canceled' };
     }

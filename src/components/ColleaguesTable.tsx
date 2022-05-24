@@ -33,8 +33,7 @@ const ColleaguesTable = (props: IColleaguesTableProps) => {
       </thead>
       <tbody>
         {colleaguesData.map((colleague: IColleague) =>
-          tableRowMaker(colleague),
-        )}
+          tableRowMaker(colleague))}
       </tbody>
     </table>
   );
