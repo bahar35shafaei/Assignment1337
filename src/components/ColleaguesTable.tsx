@@ -23,14 +23,12 @@ const ColleaguesTable = (props: IColleaguesTableProps) => {
 
   return (
     <table className="w-full border-2 shadow-lg mb-4">
-      <thead>
-        <th className="font-bold py-4 px-2 border-2 border-white bg-neutral-900 text-white">
-          Name
-        </th>
-        <th className="font-bold py-4 px-2 border-2 border-white bg-neutral-900 text-white">
-          Office
-        </th>
-      </thead>
+      <th className="font-bold py-4 px-2 border-2 border-white bg-neutral-900 text-white">
+        Name
+      </th>
+      <th className="font-bold py-4 px-2 border-2 border-white bg-neutral-900 text-white">
+        Office
+      </th>
       <tbody>
         {colleaguesData.map((colleague: IColleague) =>
           tableRowMaker(colleague))}
