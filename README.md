@@ -6,9 +6,13 @@ This project was bootstrapped with [Create React App]
 
 In the project directory, you can run:
 
+### `yarn dev`
+
+Runs the app in the development mode with DEV-SERVER it is prevent CORS error
+
 ### `yarn start`
 
-Runs the app in the development mode.\
+Runs the app in the development mode with out DEV-SERVER it is lead to CORS error .\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
